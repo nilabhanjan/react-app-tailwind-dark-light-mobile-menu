@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./MainComponents/Footer";
 import Location from "./MainComponents/Location";
 import Home from "./MainComponents/Home";
+import '../src/Styles.css';
 
 function App() {
   let navmenu = [

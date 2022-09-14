@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import {FaMoon,FaSun} from "react-icons/fa"
 import { NavLink, Link } from "react-router-dom";
 import Typed from "react-typed";
+import UseDarkMode from "../Tools/UseDarkMode";
 
 export default function Navbar({ navmenu }) {
   const [nav, setNav] = useState(false);
+  const [colorTheme,setColorTheme] = UseDarkMode();
 
   //   for closing and opening of slide menu on mobile
   const handleNav = () => {
@@ -12,7 +15,7 @@ export default function Navbar({ navmenu }) {
   };
 
   return (
-    <div className="flex items-center justify-between h-18 max-w-[1240] mx-auto px-8 text-white shadow-lg bg-black ">
+    <div className="flex items-center justify-between h-18 max-w-[1240] mx-auto px-8 py-5 shadow-lg  bg-white dark:bg-black dark:text-white">
       {/* image for navbar */}
 
       <Link to="/">
@@ -23,15 +26,15 @@ export default function Navbar({ navmenu }) {
           className="text-red-500 text-2xl"
         >
           <Typed
-            strings={["NILABH ANJAN CHUTIA"]}
-            typeSpeed={40}
-            backSpeed={50}
+            strings={["NILABH ANJAN CHUTIA..."]}
+            typeSpeed={500}
+            
           />
         </div>
       </Link>
 
       {/* menu for navbar mapped */}
-      <ul className="hidden md:flex text-white">
+      <ul className="hidden md:flex ">
         {navmenu.map((link) => (
           <li key={link.name} className="md:ml-8 text-l md:my-0 my-7">
             <NavLink
@@ -42,13 +45,22 @@ export default function Navbar({ navmenu }) {
             </NavLink>
           </li>
         ))}
+        <li>
+        <div onClick={()=>setColorTheme(colorTheme)} className=" flex ml-3 mt-1  z-10 ">
+        {colorTheme === 'dark' ? (
+          <FaMoon className="moon"  size={20}></FaMoon>
+        ) : (
+          <FaSun className="sun"  size={20}></FaSun>
+        )}
+      </div>
+      </li>
       </ul>
 
       {/* burger button and cross button on mobile view */}
 
-      <div onClick={handleNav} className=" flex md:hidden z-10 ">
+      <div onClick={handleNav} className=" flex md:hidden z-10  ">
         {nav ? (
-          <AiOutlineClose size={20}></AiOutlineClose>
+          <AiOutlineClose  size={20}/>
         ) : (
           <AiOutlineMenu size={20}></AiOutlineMenu>
         )}
