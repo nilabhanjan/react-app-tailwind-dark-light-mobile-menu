@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./MainComponents/Navbar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Footer from "./MainComponents/Footer";
+import Location from "./MainComponents/Location";
+import Home from "./MainComponents/Home";
 
 function App() {
+  let navmenu = [
+    { name: "ABOUT ME", link: "/about" },
+    { name: "CONTACT", link: "/contact" },
+    { name: "OUR LOCATION", link: "/location" },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <div className="flex flex-col h-screen justify-between ">
+          <header>
+            <Navbar navmenu={navmenu} />
+          </header>
+
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+
+              <Route path="/location" element={<Location />} />
+            </Routes>
+          </main>
+
+          <footer>
+            <Footer />
+          </footer>
+        </div>
+      </Router>
+    </>
   );
 }
 
