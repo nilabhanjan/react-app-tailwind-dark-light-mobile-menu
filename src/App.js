@@ -9,12 +9,12 @@ function App() {
   let navmenu = [
     { name: "ABOUT ME", link: "/about" },
     { name: "CONTACT", link: "/contact" },
-    { name: "OUR LOCATION", link: "/location" },
+    { name: "LOCATION", link: "/location" },
   ];
   return (
     <>
       <Router>
-        <div className="flex flex-col h-screen justify-between ">
+        <div className="flex flex-col h-screen justify-between bg-gray-200 dark:bg-black">
           <header>
             <Navbar navmenu={navmenu} />
           </header>
